@@ -34,16 +34,21 @@ nType_cool = 'c';  % Part of filename
 nType_heat = 'h';  % Part of filename 
 Untitled=Untitled(1:1:46931,:);
 figure
-plot(Untitled(:,2)), hold on
+%plot(Untitled(:,2)), hold on
 plot(Untitled(:,3)), hold on
 plot(Untitled(:,4)), hold on
-%plot(Untitled(:,5)), hold on
-%plot(Untitled(:,6)), hold on
-%plot(Untitled(:,7)), hold on
-%plot(Untitled(:,8)), hold on
-plot(Untitled(:,9)), hold on
+legend('50g toppen','50g botten')
+figure
+plot(Untitled(:,5)), hold on
+plot(Untitled(:,6)), hold on
+legend('100g toppen','100g botten')
+figure
+plot(Untitled(:,7)), hold on
+plot(Untitled(:,8)), hold on
+legend('150g toppen','150g botten')
+%plot(Untitled(:,9)), hold on
 
-legend('omgivining','50g toppen','50g botten','100g toppen','150g toppen','150g botten','referens')
+%legend('omgivining','50g toppen','50g botten','100g toppen','150g toppen','150g botten','referens')
 
 xlabel('Mätningar')
 ylabel('T (°C)')

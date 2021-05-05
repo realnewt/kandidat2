@@ -566,8 +566,8 @@ classdef ExpID_THistory_array
                                  l(4)=plot(NaN,NaN,'--b');
                                  l(5)=plot(NaN,NaN,'--r');
                                  l(6)=plot(NaN,NaN,'--g');
-                                legend(l, 'Top sensor (cooling)', 'Center sensor (cooling)', 'Bottom sensor (cooling)',...
-                                    'Top sensor (heating)', 'Center sensor (heating)', 'Bottom sensor (heating)');
+                                %legend(l, 'Top sensor (cooling)', 'Center sensor (cooling)', 'Bottom sensor (cooling)',...
+                                    %'Top sensor (heating)', 'Center sensor (heating)', 'Bottom sensor (heating)');
                      
                       hold off;
 %                      legend('show');
