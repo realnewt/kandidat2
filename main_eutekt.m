@@ -1,5 +1,5 @@
-clc; %clear all; 
-%close all;
+clc; clear all; 
+close all;
 
 %% 1. Specify Experimental Properties
 
@@ -35,26 +35,36 @@ nType_heat = 'h';  % Part of filename
 Untitled=ny(1:30:35073,:);
 
 figure
-plot(Untitled(:,2)), hold on
-plot(Untitled(:,3)), hold on
-plot(Untitled(:,9)), hold on
-legend('50g toppen','50g botten','omgivining')
-figure
-plot(Untitled(:,4)), hold on
-plot(Untitled(:,5)), hold on
-plot(Untitled(:,9)), hold on
-legend('100g toppen','100g botten','omgivining')
-figure
-plot(Untitled(:,6)), hold on
-plot(Untitled(:,7)), hold on
-plot(Untitled(:,9)), hold on
-legend('150g toppen','150g botten','omgivining')
-%plot(Untitled(:,8)), hold on
+plot(Untitled(:,2),'LineWidth',1.3), hold on
+plot(Untitled(:,3),'LineWidth',1.3), hold on
+plot(Untitled(:,9),'LineWidth',1.3), hold on
+plot(Untitled(:,8),'LineWidth',1.3), hold on
+axis([0 966 48 75]);
+legend('50g toppen','50g botten','omgivining','referens','FontSize',12)
+xlabel('Mätningar','FontSize',12)
+ylabel('T (°C)','FontSize',12)
 
+figure
+plot(Untitled(:,4),'LineWidth',1.3), hold on
+plot(Untitled(:,5),'LineWidth',1.3), hold on
+plot(Untitled(:,9),'LineWidth',1.3), hold on
+plot(Untitled(:,8),'LineWidth',1.3), hold on
+axis([0 966 48 75]);
+legend('100g toppen','100g botten','omgivining','referens','FontSize',12)
+xlabel('Mätningar','FontSize',12)
+ylabel('T (°C)','FontSize',12)
+
+figure
+plot(Untitled(:,6),'LineWidth',1.3), hold on
+plot(Untitled(:,7),'LineWidth',1.3), hold on
+plot(Untitled(:,9),'LineWidth',1.3), hold on
+plot(Untitled(:,8),'LineWidth',1.3), hold on
+axis([0 966 48 75]);
+legend('150g toppen','150g botten','omgivining','referens','FontSize',12)
+
+xlabel('Mätningar','FontSize',12)
+ylabel('T (°C)','FontSize',12)
 %legend('50g toppen','50g botten','100g toppen','100g botten','150g toppen','150g botten','referens','omgivining')
-
-xlabel('Mätningar')
-ylabel('T (°C)')
             
 %% 3. Set Evaluation Parameters (inspect from plot)
 
@@ -103,7 +113,7 @@ for i=1:NS
             
             % Extract from data array
             T_sample   = Untitled(idx_Cycle_temp,idx_sensor{2,i});
-            T_ref      = Untitled(idx_Cycle_temp,idx_sensor{3,i})
+            T_ref      = Untitled(idx_Cycle_temp,idx_sensor{3,i});
             
             % Set instance properties
             nSensor    = idx_sensor{1,i};
@@ -126,50 +136,5 @@ a = ExpID_THistory_array(objArray);
 
 
 %% Generate Plots
-a.plot_h_array([Tmin Tmax]), hold on
-
-%%
-
-idx_sensor = {'c';...     % Top Center Bottom
-                 8;...    % Reference readings
-                3};       % Sample readings
-            
-%% 5. Create "THistory" object and store in object array
-
-for i=1:NS
-    for j=1:NC
-        for k=1:2
-%          for k=1 % only cooling
-%          for k=2 % only heating
-            
-            % Cycle no. and cool/heat case
-            idx_Cycle_temp = idx_Cycle{j};          % Cycle j in array "idx_Cycle" 
-            idx_Cycle_temp = idx_Cycle_temp(k,:);   % Cycle j, type k in array "idx_Cycle"
-            
-            % Extract from data array
-            T_sample   = Untitled(idx_Cycle_temp,idx_sensor{2,i});
-            T_ref      = Untitled(idx_Cycle_temp,idx_sensor{3,i})
-            
-            % Set instance properties
-            nSensor    = idx_sensor{1,i};
-            nCycle     = num2str(j);
-            if k==1; nType=nType_cool; else nType=nType_heat;end 
-            
-            % Create "ExpID_THistory" object and store in object array
-            objArray(i,j,k) = THistoryExperiment(nExpID,nSample,nRef,msample,mref,mtsample,mtref,dt,... % Superclass properties
-                nSensor,nCycle,nType,... % Subclass properties
-                T_sample,T_ref,Tmax,Tmin,Tnorm,isSmSample,isSmRef,Tsm_sample_max_h,Tsm_sample_min_h,...
-                Tsm_sample_max_c,Tsm_sample_min_c,Tmax_sc,Tmin_sc,Tamb_max,Tamb_min,dT); % Subclass properties
-            % Evaluation
-            objArray(i,j,k) = eval_h_diff(objArray(i,j,k));
-
-        end
-    end
-end
-
-a = ExpID_THistory_array(objArray);
-
-
-%% Generate Plots
-a.plot_h_array([Tmin Tmax]), hold on
+%a.plot_h_array([Tmin Tmax]), hold on
 

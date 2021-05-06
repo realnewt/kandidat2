@@ -560,14 +560,13 @@ classdef ExpID_THistory_array
                     
                      
                                  % Custom legend
+                                 
+                                txt = ['idx  ',num2str(j), 'cooling'];
                                  l(1)=plot(NaN,NaN,'-b');
-                                 l(2)=plot(NaN,NaN,'-r');
-                                 l(3)=plot(NaN,NaN,'-g');
-                                 l(4)=plot(NaN,NaN,'--b');
-                                 l(5)=plot(NaN,NaN,'--r');
-                                 l(6)=plot(NaN,NaN,'--g');
-                                %legend(l, 'Top sensor (cooling)', 'Center sensor (cooling)', 'Bottom sensor (cooling)',...
-                                    %'Top sensor (heating)', 'Center sensor (heating)', 'Bottom sensor (heating)');
+                                 l(2)=plot(NaN,NaN,'--b');
+                                
+                                legend(l, 'idx1 (cooling)',...
+                                    'idx1 (heating)');
                      
                       hold off;
 %                      legend('show');

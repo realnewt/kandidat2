@@ -132,11 +132,8 @@ else  % Cooling
     %%  (1) Cooling
     
     %%  (2) Find indices: Tmax -> Tmin
-    Tmax
-    Tmin
-    Tr_0
-    idx_high_r = find(Tr_0<Tmax,1)
-    idx_low_r  = find(Tr_0<Tmin,1)
+    idx_high_r = find(Tr_0<Tmax,1);
+    idx_low_r  = find(Tr_0<Tmin,1);
     idx_high_s = find(Ts_0<Tmax,1);
     idx_low_s  = find(Ts_0<Tmin,1);
     idx_eval_s = (idx_high_s:idx_low_s);
@@ -200,7 +197,7 @@ else  % Cooling
     end
     
     %%  (4) Interpolation
-    F_r = griddedInterpolant(fliplr(Tr'),fliplr(tr')); % transpose to row vector [1 n]
+    F_r = griddedInterpolant(sort(Tr'),sort(tr')); % transpose to row vector [1 n]
     tr_ip = F_r(Ts); % [n 1]
     
     dt_s = diff(ts);     % dt_s > 0
@@ -220,11 +217,11 @@ else  % Cooling
     h = -1*cumtrapz_adj(Ts(1:end-1),cp_eff); % [J/(kg)]; '-1' for cooling
     
     %  (7) Shift h=0 at Tnorm
-    i_n_low = find(Ts<=Tnorm,1)
-    Ts
-    i_n_high = i_n_low-1
-    h_ip = h(i_n_high:i_n_low)' % [1 N] vector
-    T_ip = Ts(i_n_high:i_n_low)' % [1 N] vector
+    i_n_low = find(Ts<=Tnorm,1);
+    
+    i_n_high = i_n_low-1;
+    h_ip = h(i_n_high:i_n_low)'; % [1 N] vector
+    T_ip = Ts(i_n_high:i_n_low)'; % [1 N] vector
     
     F_h = griddedInterpolant(fliplr(T_ip),fliplr(h_ip));
     h_n =  F_h(Tnorm);

@@ -272,7 +272,7 @@ classdef THistoryExperiment
             
             % Random number drawn for each T
             %             cp_Cu = cp_Cu_0 + cp_Cu_0.*a_cpt.*randn(size(cp_Cu_0));
-            
+            cp_Cu=900;
         end
         
         %% Evaluation: Calculate copper tube specific heat capacity
