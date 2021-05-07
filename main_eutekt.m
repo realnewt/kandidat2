@@ -20,18 +20,18 @@ mtsample    = 65e-3;                  % in [kg]
 mtref       = 55e-3;                  % in [kg]
 nPlot       = 'k-';
 
-idx_sensor = {'c';...     % Top Center Bottom
-                 8;...    % Reference readings
-                2};       % Sample readings
+idx_sensor = {'c' 'c';...     % Top Center Bottom
+                 8 8;...    % Reference readings
+                6 7};       % Sample readings
 
-NS = 1;     % No. of sensors per sample
-NC = 1;     % No. of cycles
+NS = 2;     % No. of sensors per sample
+NC = 2;     % No. of cycles
 
        
 %% 2. Plot
-load(nSaveID);          % load raw_readings (import from Excel)
-nType_cool = 'c';  % Part of filename 
-nType_heat = 'h';  % Part of filename 
+load(nSaveID);      % load raw_readings (import from Excel)
+nType_cool = 'c';  % Part of filename
+nType_heat = 'h';  % Part of filename
 Untitled=ny(1:30:35073,:);
 
 figure
@@ -68,7 +68,7 @@ ylabel('T (°C)','FontSize',12)
             
 %% 3. Set Evaluation Parameters (inspect from plot)
 
-eval_T      = [56 68 57];    % [Tmin Tmax Tnorm]
+eval_T      = [56 68 66];    % [Tmin Tmax Tnorm]
 Tmin        = eval_T(1);    
 Tmax        = eval_T(2);
 Tnorm       = eval_T(3);
@@ -96,8 +96,9 @@ offset = texp*3600/dt;    % Number of indices for texp
 
 idx_1 = [410:485;... % Cooling
             486:561];    % Heating
-      
-idx_Cycle = {idx_1};
+idx_2 = [560:650;... % Cooling
+            651:741];    % Heating
+idx_Cycle = {idx_1 idx_2};
 
 %% 5. Create "THistory" object and store in object array
 
@@ -112,8 +113,8 @@ for i=1:NS
             idx_Cycle_temp = idx_Cycle_temp(k,:);   % Cycle j, type k in array "idx_Cycle"
             
             % Extract from data array
-            T_sample   = Untitled(idx_Cycle_temp,idx_sensor{2,i});
-            T_ref      = Untitled(idx_Cycle_temp,idx_sensor{3,i});
+            T_sample   = Untitled(idx_Cycle_temp,idx_sensor{3,i});
+            T_ref      = Untitled(idx_Cycle_temp,idx_sensor{2,i});
             
             % Set instance properties
             nSensor    = idx_sensor{1,i};
@@ -136,5 +137,5 @@ a = ExpID_THistory_array(objArray);
 
 
 %% Generate Plots
-%a.plot_h_array([Tmin Tmax]), hold on
+a.plot_h_array([Tmin Tmax]), hold on
 

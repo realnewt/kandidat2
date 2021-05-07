@@ -1,3 +1,4 @@
+
 classdef ExpID_THistory_array  
     
 % This class evaluates an objArray of ExpID_THistory objects and
@@ -561,12 +562,15 @@ classdef ExpID_THistory_array
                      
                                  % Custom legend
                                  
-                                txt = ['idx  ',num2str(j), 'cooling'];
+
                                  l(1)=plot(NaN,NaN,'-b');
                                  l(2)=plot(NaN,NaN,'--b');
+                                  l(3)=plot(NaN,NaN,'-r');
+                                   l(4)=plot(NaN,NaN,'--r');
                                 
-                                legend(l, 'idx1 (cooling)',...
-                                    'idx1 (heating)');
+                                legend(l, 'toppen 50g (kylning)',...
+                                    'toppen 50g (värmning)', 'botten 50g (kylning)',...
+                                    'botten 50g (värmning)');
                      
                       hold off;
 %                      legend('show');

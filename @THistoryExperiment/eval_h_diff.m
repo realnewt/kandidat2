@@ -197,7 +197,7 @@ else  % Cooling
     end
     
     %%  (4) Interpolation
-    F_r = griddedInterpolant(sort(Tr'),sort(tr')); % transpose to row vector [1 n]
+    F_r = griddedInterpolant(fliplr(Tr'),fliplr(tr')); % transpose to row vector [1 n]
     tr_ip = F_r(Ts); % [n 1]
     
     dt_s = diff(ts);     % dt_s > 0

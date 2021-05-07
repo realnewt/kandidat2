@@ -78,7 +78,7 @@ plot(Untitled(:,8),'LineWidth',1.3), hold on
             
 %% 3. Set Evaluation Parameters (inspect from plot)
 
-eval_T      = [27 40 30];    % [Tmin Tmax Tnorm]
+eval_T      = [27 40 37];    % [Tmin Tmax Tnorm]
 Tmin        = eval_T(1);    
 Tmax        = eval_T(2);
 Tnorm       = eval_T(3);
@@ -102,7 +102,7 @@ T_liquid = [38 38.5];
 
 %% 4. Define indices for individual cooling/heating experiment
 
-offset = texp*3600/dt;    % Number of indices for texp
+%offset = texp*3600/dt;    % Number of indices for texp
 
 idx_1 = [310:590;... % Cooling
             5:285];    % Heating         
@@ -121,8 +121,8 @@ for i=1:NS
             idx_Cycle_temp = idx_Cycle_temp(k,:);   % Cycle j, type k in array "idx_Cycle"
             
             % Extract from data array
-            T_sample   = Untitled(idx_Cycle_temp,idx_sensor{2,i});
-            T_ref      = Untitled(idx_Cycle_temp,idx_sensor{3,i});
+            T_sample   = Untitled(idx_Cycle_temp,idx_sensor{3,i});
+            T_ref      = Untitled(idx_Cycle_temp,idx_sensor{2,i});
             
             % Set instance properties
             nSensor    = idx_sensor{1,i};
