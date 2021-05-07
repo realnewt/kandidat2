@@ -567,6 +567,7 @@ classdef ExpID_THistory_array
                                  l(2)=plot(NaN,NaN,'--b');
                                   l(3)=plot(NaN,NaN,'-r');
                                    l(4)=plot(NaN,NaN,'--r');
+                                    
                                 
                                 legend(l, 'toppen 50g (kylning)',...
                                     'toppen 50g (värmning)', 'botten 50g (kylning)',...

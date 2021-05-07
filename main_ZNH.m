@@ -21,7 +21,7 @@ nPlot       = 'k-';
 
 idx_sensor = {'c' 'b';...     % Top Center Bottom
                          9 9 ;...    % Reference readings
-                         7 8 };       % Sample readings
+                         3 7 };       % Sample readings
 
 NS = 2;     % No. of sensors per sample
 NC = 1;     % No. of cycles
@@ -70,7 +70,7 @@ ylabel('T (°C)','FontSize',12)
             
 %% 3. Set Evaluation Parameters (inspect from plot)
 
-eval_T      = [27 40 36.5];    % [Tmin Tmax Tnorm]
+eval_T      = [27 40 37];    % [Tmin Tmax Tnorm]
 Tmin        = eval_T(1);    
 Tmax        = eval_T(2);
 Tnorm       = eval_T(3);

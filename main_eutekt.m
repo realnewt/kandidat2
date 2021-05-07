@@ -25,7 +25,7 @@ idx_sensor = {'c' 'c';...     % Top Center Bottom
                 6 7};       % Sample readings
 
 NS = 2;     % No. of sensors per sample
-NC = 2;     % No. of cycles
+NC = 3;     % No. of cycles
 
        
 %% 2. Plot
@@ -98,7 +98,10 @@ idx_1 = [410:485;... % Cooling
             486:561];    % Heating
 idx_2 = [560:650;... % Cooling
             651:741];    % Heating
-idx_Cycle = {idx_1 idx_2};
+idx_3 = [720:810;... % Cooling
+            811:901];    % Heating
+        
+idx_Cycle = {idx_1 idx_2 idx_3};
 
 %% 5. Create "THistory" object and store in object array
 
